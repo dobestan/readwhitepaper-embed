@@ -1,0 +1,25 @@
+# ReadWhitepaper Embed Widget
+
+> Embeddable ReadWhitepaper widgets for any website. Zero dependencies, Shadow DOM isolation, 4 themes (light/dark/sepia/auto).
+
+## Quick Start
+
+Add to any HTML page:
+- Script: <script src="https://cdn.jsdelivr.net/npm/readwhitepaper-embed@1/dist/embed.min.js"></script>
+
+## Links
+
+- Main site: https://readwhitepaper.com
+- Widget docs: https://widget.readwhitepaper.com
+- npm: https://www.npmjs.com/package/readwhitepaper-embed
+- GitHub: https://github.com/dobestan/readwhitepaper-embed
+- API: https://readwhitepaper.com/developers/
+
+## Standalone Widget Family
+
+- [CryptoLogo Widget](https://widget.crypto-logo.com)
+- [VentureInKorea Widget](https://widget.ventureinkorea.com)
+
+## Part of FYIPedia
+
+Open-source developer tools ecosystem — https://fyipedia.com
