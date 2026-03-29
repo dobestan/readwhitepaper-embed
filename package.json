@@ -1,0 +1,40 @@
+{
+  "name": "readwhitepaper-embed",
+  "version": "1.0.0",
+  "description": "Embed ReadWhitepaper widgets — blockchain whitepaper cards, glossary terms, search. Zero dependencies, Shadow DOM, 4 themes.",
+  "main": "dist/embed.min.js",
+  "module": "dist/embed.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "blockchain",
+    "whitepaper",
+    "bitcoin",
+    "ethereum",
+    "defi",
+    "crypto",
+    "glossary",
+    "embed",
+    "widget",
+    "shadow-dom",
+    "zero-dependencies",
+    "readwhitepaper"
+  ],
+  "homepage": "https://widget.readwhitepaper.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dobestan/readwhitepaper-embed"
+  },
+  "bugs": {
+    "url": "https://github.com/dobestan/readwhitepaper-embed/issues"
+  },
+  "license": "MIT",
+  "author": "dobestan <dobestan@gmail.com>",
+  "publishConfig": {
+    "access": "public"
+  }
+}
