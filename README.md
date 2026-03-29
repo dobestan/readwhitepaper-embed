@@ -199,6 +199,17 @@ Visit [readwhitepaper.com](https://readwhitepaper.com) -- ReadWhitepaper is a co
 - **npm package**: [npmjs.com/package/readwhitepaper-embed](https://www.npmjs.com/package/readwhitepaper-embed)
 - **GitHub**: [github.com/dobestan/readwhitepaper-embed](https://github.com/dobestan/readwhitepaper-embed)
 
+## Embed Widget
+
+Embed [ReadWhitepaper](https://readwhitepaper.com) widgets on any website with [readwhitepaper-embed](https://widget.readwhitepaper.com):
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/readwhitepaper-embed@1/dist/embed.min.js"></script>
+<div data-readwhitepaper="entity" data-slug="example"></div>
+```
+
+Zero dependencies · Shadow DOM · 4 themes (light/dark/sepia/auto) · [Widget docs](https://widget.readwhitepaper.com)
+
 ## License
 
 MIT -- see [LICENSE](./LICENSE).
