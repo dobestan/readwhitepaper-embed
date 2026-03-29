@@ -1,21 +1,48 @@
 # ReadWhitepaper Embed Widget
 
-> Embeddable ReadWhitepaper widgets for any website. Zero dependencies, Shadow DOM isolation, 4 themes (light/dark/sepia/auto).
+> Crypto whitepaper research. Embeddable widgets for any website. Zero dependencies, Shadow DOM isolation.
 
 ## Quick Start
 
-Add to any HTML page:
-- Script: <script src="https://cdn.jsdelivr.net/npm/readwhitepaper-embed@1/dist/embed.min.js"></script>
+```html
+<script src="https://cdn.jsdelivr.net/npm/readwhitepaper-embed@1/dist/embed.min.js"></script>
+<div data-readwhitepaper="entity" data-slug="example"></div>
+```
+
+## Available Widget Types (4)
+
+- entity: `data-readwhitepaper="entity"`
+- glossary: `data-readwhitepaper="glossary"`
+- guide: `data-readwhitepaper="guide"`
+- search: `data-readwhitepaper="search"`
+
+## Customization
+
+- **Themes**: light, dark, sepia, auto (follows system preference)
+- **Sizes**: compact (280px), default (420px), large (720px)
+- **Styles**: modern, classic
+
+```html
+<div data-readwhitepaper="entity" data-slug="example"
+     data-theme="auto" data-size="compact" data-style-variant="modern"></div>
+```
+
+## Integration Methods
+
+1. **Script tag** (recommended): `<script src="https://cdn.jsdelivr.net/npm/readwhitepaper-embed@1/dist/embed.min.js"></script>`
+2. **iframe**: `https://readwhitepaper.com/iframe/entity/{slug}/`
+3. **oEmbed**: `https://readwhitepaper.com/oembed?url={page_url}&format=json`
+4. **Badge**: `https://readwhitepaper.com/badge/site.svg`
 
 ## Links
 
 - Main site: https://readwhitepaper.com
 - Widget docs: https://widget.readwhitepaper.com
-- npm: https://www.npmjs.com/package/readwhitepaper-embed
-- GitHub: https://github.com/dobestan/readwhitepaper-embed
-- API: https://readwhitepaper.com/developers/
+- API documentation: https://readwhitepaper.com/developers/
+- npm package: https://www.npmjs.com/package/readwhitepaper-embed
+- GitHub: https://github.com/fyipedia/readwhitepaper-embed
 
-## Standalone Widget Family
+## Standalone Widget Network
 
 - [CryptoLogo Widget](https://widget.crypto-logo.com)
 - [VentureInKorea Widget](https://widget.ventureinkorea.com)
