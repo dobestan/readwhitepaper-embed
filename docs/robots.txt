@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# ReadWhitepaper Embed Widget
+# Main site: https://readwhitepaper.com
+# Widget docs: https://widget.readwhitepaper.com
+# npm: https://www.npmjs.com/package/readwhitepaper-embed
