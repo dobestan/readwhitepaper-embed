@@ -1,47 +1,227 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://widget.readwhitepaper.com">
-    <meta property="og:title" content="ReadWhitepaper Embed Widget">
-    <meta property="og:description" content="Embed ReadWhitepaper widgets on any website. Zero dependencies, Shadow DOM, 4 themes.">
-    <meta property="og:image" content="https://readwhitepaper.com/static/og/homepage.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:url" content="https://widget.readwhitepaper.com">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="ReadWhitepaper">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="ReadWhitepaper Embed Widget">
-    <meta name="twitter:description" content="Embed ReadWhitepaper widgets on any website.">
-    <meta name="twitter:image" content="https://readwhitepaper.com/static/og/homepage.png">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ReadWhitepaper Embed Widget -- Blockchain Whitepaper Widgets for Any Website</title>
-  <meta name="description" content="Embed ReadWhitepaper blockchain whitepaper widgets on any website. Zero dependencies, Shadow DOM isolation.">
+  <title>ReadWhitepaper Embed Widget — Blockchain Whitepaper Widgets for Any Website</title>
+  <meta name="description" content="Embed blockchain whitepaper cards, glossary terms, guides, and search on any website. Zero dependencies, Shadow DOM isolation, 4 themes, 2 styles.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://widget.readwhitepaper.com">
+  <meta property="og:title" content="ReadWhitepaper Embed Widget — Blockchain Whitepaper Widgets">
+  <meta property="og:description" content="Embed blockchain whitepaper cards, glossary terms, and search widgets on any website. Zero dependencies, Shadow DOM, 4 themes.">
+  <meta property="og:image" content="https://readwhitepaper.com/static/og/homepage.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://widget.readwhitepaper.com">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ReadWhitepaper">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ReadWhitepaper Embed Widget">
+  <meta name="twitter:description" content="Embed blockchain whitepaper widgets on any website. Zero dependencies, Shadow DOM, 4 themes.">
+  <meta name="twitter:image" content="https://readwhitepaper.com/static/og/homepage.png">
   <style>
-    body { font-family: system-ui, -apple-system, sans-serif; max-width: 800px; margin: 0 auto; padding: 2rem; color: #1a1a1a; }
-    h1 { color: #6366F1; }
-    pre { background: #f5f5f5; padding: 1rem; border-radius: 8px; overflow-x: auto; }
-    .badge { display: inline-block; background: #6366F1; color: white; padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.875rem; text-decoration: none; margin-right: 0.5rem; }
+    :root { --accent: #6366F1; --bg: #0f172a; --surface: #1e293b; --text: #f8fafc; --muted: #94a3b8; --border: #334155; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+    .hero { text-align: center; padding: 80px 24px 48px; }
+    .hero h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 12px; }
+    .hero h1 span { color: var(--accent); }
+    .hero p { font-size: 1.1rem; color: var(--muted); max-width: 600px; margin: 0 auto 24px; }
+    .hero-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .hero-buttons a { padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.95rem; }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-secondary { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
+    section { padding: 48px 0; }
+    section h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 16px; color: var(--accent); }
+    section p { color: var(--muted); margin-bottom: 16px; }
+    pre { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 16px; overflow-x: auto; margin: 16px 0; position: relative; }
+    code { font-family: "JetBrains Mono", "Fira Code", monospace; font-size: 0.85rem; color: #e2e8f0; }
+    .code-label { position: absolute; top: 8px; right: 8px; font-size: 0.7rem; color: var(--muted); background: var(--bg); padding: 2px 6px; border-radius: 4px; }
+    .widget-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin: 24px 0; }
+    .widget-demo { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 20px; }
+    .widget-demo h3 { font-size: 1rem; margin-bottom: 8px; }
+    .widget-demo p { font-size: 0.85rem; color: var(--muted); }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+    th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+    th { color: var(--accent); font-weight: 600; }
+    td code { background: var(--surface); padding: 2px 6px; border-radius: 4px; font-size: 0.8rem; }
+    .themes-row { display: flex; gap: 16px; flex-wrap: wrap; margin: 16px 0; }
+    .theme-card { flex: 1; min-width: 200px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 16px; text-align: center; }
+    .theme-card .dot { width: 24px; height: 24px; border-radius: 50%; display: inline-block; margin-bottom: 8px; }
+    footer { padding: 48px 0; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.85rem; }
+    footer a { color: var(--accent); text-decoration: none; }
+    .footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 24px; }
+    .footer-grid h4 { color: var(--text); font-size: 0.9rem; margin-bottom: 8px; }
+    .footer-grid ul { list-style: none; }
+    .footer-grid li { margin-bottom: 4px; }
+    @media (max-width: 640px) { .footer-grid { grid-template-columns: 1fr; } .hero h1 { font-size: 1.8rem; } }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "ReadWhitepaper Embed Widget",
+        "url": "https://widget.readwhitepaper.com",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any (Web Browser)",
+        "description": "Embeddable blockchain whitepaper widgets for any website. Shadow DOM isolation, 4 themes.",
+        "publisher": {
+          "@type": "Organization",
+          "name": "ReadWhitepaper",
+          "url": "https://readwhitepaper.com"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "ReadWhitepaper", "item": "https://readwhitepaper.com" },
+          { "@type": "ListItem", "position": 2, "name": "Embed Widget" }
+        ]
+      },
+      {
+        "@type": "SoftwareSourceCode",
+        "name": "readwhitepaper-embed",
+        "codeRepository": "https://github.com/dobestan/readwhitepaper-embed",
+        "programmingLanguage": "TypeScript",
+        "runtimePlatform": "Browser",
+        "license": "https://opensource.org/licenses/MIT"
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
-  <h1>ReadWhitepaper Embed Widget</h1>
-  <p>
-    <a class="badge" href="https://www.npmjs.com/package/readwhitepaper-embed">npm</a>
-    <a class="badge" href="https://github.com/dobestan/readwhitepaper-embed">GitHub</a>
-    <a class="badge" href="https://readwhitepaper.com">Visit ReadWhitepaper</a>
-  </p>
-  <p>Embed ReadWhitepaper blockchain whitepaper widgets on any website. Zero dependencies, Shadow DOM style isolation, 4 themes, 2 styles.</p>
-  <h2>Quick Start</h2>
-  <pre><code>&lt;div data-readwhitepaper="entity" data-slug="bitcoin" data-theme="light"&gt;&lt;/div&gt;
-&lt;script src="https://cdn.jsdelivr.net/npm/readwhitepaper-embed@1/dist/embed.min.js"&gt;&lt;/script&gt;</code></pre>
+  <div class="hero">
+    <h1><span>ReadWhitepaper</span> Embed Widget</h1>
+    <p>Add blockchain whitepaper cards, glossary terms, guides, and search to any website. 4 widget types, 4 themes, Shadow DOM isolation, zero dependencies.</p>
+    <div class="hero-buttons">
+      <a href="#quick-start" class="btn-primary">Get Started</a>
+      <a href="https://github.com/dobestan/readwhitepaper-embed" class="btn-secondary">GitHub</a>
+      <a href="https://www.npmjs.com/package/readwhitepaper-embed" class="btn-secondary">npm</a>
+    </div>
+  </div>
 
-  <h2>Live Demo</h2>
-  <div data-readwhitepaper="entity" data-slug="bitcoin" data-theme="light"></div>
-  <br>
-  <div data-readwhitepaper="glossary" data-slug="proof-of-work" data-theme="dark"></div>
+  <div class="container">
+    <section id="quick-start">
+      <h2>Quick Start</h2>
+      <p>Copy and paste this code into your HTML to embed a whitepaper card:</p>
+      <pre><code>&lt;!-- Load widget --&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/readwhitepaper-embed@1/dist/embed.min.js"&gt;&lt;/script&gt;
+
+&lt;!-- Whitepaper card --&gt;
+&lt;div data-readwhitepaper="entity" data-slug="bitcoin"&gt;&lt;/div&gt;
+
+&lt;!-- Glossary term --&gt;
+&lt;div data-readwhitepaper="glossary" data-slug="proof-of-work" data-theme="dark"&gt;&lt;/div&gt;</code><span class="code-label">HTML</span></pre>
+    </section>
+
+    <section id="live-demo">
+      <h2>Live Demo</h2>
+      <p>These widgets load data from the <a href="https://readwhitepaper.com/developers/">ReadWhitepaper API</a>:</p>
+      <div style="display: flex; gap: 24px; flex-wrap: wrap; margin: 24px 0;">
+        <div data-readwhitepaper="entity" data-slug="bitcoin" data-theme="light" style="flex: 1; min-width: 300px;"></div>
+        <div data-readwhitepaper="glossary" data-slug="proof-of-work" data-theme="dark" style="flex: 1; min-width: 300px;"></div>
+      </div>
+    </section>
+
+    <section id="widgets">
+      <h2>Widget Types</h2>
+      <p>Four widget types to embed blockchain whitepaper content anywhere:</p>
+      <div class="widget-grid">
+        <div class="widget-demo">
+          <h3>Whitepaper Card</h3>
+          <p>Full whitepaper card with title, abstract excerpt, and publication year. Links to the full whitepaper on <a href="https://readwhitepaper.com">ReadWhitepaper</a>.</p>
+          <code>data-readwhitepaper="entity"</code>
+        </div>
+        <div class="widget-demo">
+          <h3>Glossary Term</h3>
+          <p>Blockchain/crypto glossary definition card. Sourced from the <a href="https://readwhitepaper.com/glossary/">ReadWhitepaper Glossary</a>.</p>
+          <code>data-readwhitepaper="glossary"</code>
+        </div>
+        <div class="widget-demo">
+          <h3>Guide Card</h3>
+          <p>Blockchain guide summary card with excerpt and link. Browse all <a href="https://readwhitepaper.com/guides/">ReadWhitepaper Guides</a>.</p>
+          <code>data-readwhitepaper="guide"</code>
+        </div>
+        <div class="widget-demo">
+          <h3>Search Widget</h3>
+          <p>Search form linking to <a href="https://readwhitepaper.com">ReadWhitepaper</a> search results.</p>
+          <code>data-readwhitepaper="search"</code>
+        </div>
+      </div>
+    </section>
+
+    <section id="themes">
+      <h2>Themes &amp; Styles</h2>
+      <p>4 themes (light, dark, sepia, auto) and 2 styles (modern, minimal). The <code>auto</code> theme follows the user's system preference via <code>prefers-color-scheme</code>.</p>
+      <div class="themes-row">
+        <div class="theme-card"><div class="dot" style="background: #ffffff; border: 1px solid #e2e8f0;"></div><br>Light</div>
+        <div class="theme-card"><div class="dot" style="background: #1a1a1a;"></div><br>Dark</div>
+        <div class="theme-card"><div class="dot" style="background: #f5f0e8;"></div><br>Sepia</div>
+        <div class="theme-card"><div class="dot" style="background: linear-gradient(135deg, #ffffff 50%, #1a1a1a 50%);"></div><br>Auto</div>
+      </div>
+    </section>
+
+    <section id="options">
+      <h2>Widget Options</h2>
+      <table>
+        <thead><tr><th>Attribute</th><th>Values</th><th>Default</th></tr></thead>
+        <tbody>
+          <tr><td><code>data-readwhitepaper</code></td><td><code>entity</code>, <code>glossary</code>, <code>guide</code>, <code>search</code></td><td>Required</td></tr>
+          <tr><td><code>data-slug</code></td><td>Whitepaper or term slug</td><td>Required</td></tr>
+          <tr><td><code>data-theme</code></td><td><code>light</code>, <code>dark</code>, <code>sepia</code>, <code>auto</code></td><td><code>auto</code></td></tr>
+          <tr><td><code>data-size</code></td><td><code>compact</code>, <code>default</code>, <code>large</code></td><td><code>default</code></td></tr>
+          <tr><td><code>data-style-variant</code></td><td><code>modern</code>, <code>minimal</code></td><td><code>modern</code></td></tr>
+          <tr><td><code>data-no-snippet</code></td><td><code>true</code> (disable rich snippets)</td><td>Enabled</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="cdn">
+      <h2>CDN Options</h2>
+      <p>The widget is served from jsDelivr CDN with automatic version pinning:</p>
+      <pre><code>&lt;!-- Recommended: jsDelivr (auto-cached, global CDN) --&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/readwhitepaper-embed@1/dist/embed.min.js"&gt;&lt;/script&gt;
+
+&lt;!-- Alternative: npm install --&gt;
+npm install readwhitepaper-embed</code><span class="code-label">SHELL</span></pre>
+    </section>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>ReadWhitepaper</h4>
+          <ul>
+            <li><a href="https://readwhitepaper.com">Homepage</a></li>
+            <li><a href="https://readwhitepaper.com/developers/">API Docs</a></li>
+            <li><a href="https://readwhitepaper.com/glossary/">Glossary</a></li>
+            <li><a href="https://readwhitepaper.com/guides/">Guides</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="https://github.com/dobestan/readwhitepaper-embed">GitHub</a></li>
+            <li><a href="https://www.npmjs.com/package/readwhitepaper-embed">npm</a></li>
+            <li><a href="https://readwhitepaper.com/api/openapi.json">OpenAPI Spec</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Standalone Widgets</h4>
+          <ul>
+            <li><a href="https://widget.crypto-logo.com">CryptoLogo Widget</a></li>
+            <li><a href="https://widget.ventureinkorea.com">VentureInKorea Widget</a></li>
+          </ul>
+        </div>
+      </div>
+      <p style="text-align: center;">&copy; 2026 dobestan. MIT License. Powered by <a href="https://readwhitepaper.com">ReadWhitepaper</a>.</p>
+    </div>
+  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/readwhitepaper-embed@1/dist/embed.min.js"></script>
 </body>
